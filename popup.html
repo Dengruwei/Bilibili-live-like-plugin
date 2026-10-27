@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>自动点击器</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="head">
+    <div class="brand">
+      <span class="mark" aria-hidden="true"></span>
+      <h1>自动点击器</h1>
+    </div>
+    <span class="site" id="site" title="当前标签页">—</span>
+  </header>
+
+  <main class="panel">
+    <label class="field">
+      <span class="field-label">目标元素选择器</span>
+      <div class="input-row">
+        <input id="selector" type="text" value=".like-btn" spellcheck="false" autocomplete="off" />
+        <button id="probe" class="btn-ghost" type="button">检测</button>
+      </div>
+      <span class="help" id="help">默认点击页面上的 <code>.like-btn</code></span>
+    </label>
+
+    <button id="pick" class="btn-pick" type="button" title="在页面上直接点选目标元素">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="7"></circle>
+        <path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path>
+      </svg>
+      <span>从页面拾取元素</span>
+    </button>
+
+    <div class="grid">
+      <label class="field">
+        <span class="field-label">点击次数</span>
+        <input id="count" type="number" min="1" max="100000" step="1" value="40" inputmode="numeric" />
+      </label>
+      <label class="field">
+        <span class="field-label">间隔（毫秒）</span>
+        <input id="interval" type="number" min="50" max="600000" step="50" value="500" inputmode="numeric" />
+      </label>
+    </div>
+
+    <div class="presets">
+      <button type="button" data-count="10">10 次</button>
+      <button type="button" data-count="40">40 次</button>
+      <button type="button" data-count="100">100 次</button>
+      <span class="sep" aria-hidden="true"></span>
+      <button type="button" data-interval="200">200ms</button>
+      <button type="button" data-interval="500">500ms</button>
+      <button type="button" data-interval="1000">1s</button>
+    </div>
+
+    <section class="progress" id="progress" hidden>
+      <div class="progress-head">
+        <span id="progressText">0 / 0</span>
+        <span class="eta" id="eta"></span>
+      </div>
+      <div class="bar"><span class="bar-fill" id="barFill"></span></div>
+    </section>
+
+    <button id="toggle" class="btn-primary" type="button">开始点击</button>
+    <p class="status" id="status" role="status" aria-live="polite">就绪</p>
+  </main>
+
+  <footer class="foot">
+    让目标标签页保持在前台；后台标签页的计时器可能被浏览器降频。
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

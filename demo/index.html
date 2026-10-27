@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>自动点击器 · 测试页</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font: 15px/1.6 -apple-system, "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+      background: #0f1117;
+      color: #e8eaf3;
+    }
+    .card {
+      width: min(420px, 88vw);
+      padding: 32px;
+      border-radius: 20px;
+      background: #181b25;
+      border: 1px solid #2a2e3c;
+      text-align: center;
+    }
+    h1 { margin: 0 0 6px; font-size: 19px; }
+    p { margin: 0 0 24px; color: #98a0b3; font-size: 13px; }
+    .like-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 26px;
+      border: 0;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #5b57e0, #8b5cf6);
+      color: #fff;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.08s ease, filter 0.15s ease;
+    }
+    .like-btn:hover { filter: brightness(1.08); }
+    .like-btn:active { transform: scale(0.97); }
+    .count { margin-top: 18px; font-size: 34px; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .label { color: #7f8798; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+    code { padding: 2px 6px; border-radius: 5px; background: #222633; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>自动点击器测试页</h1>
+    <p>按钮带有 <code>.like-btn</code> 类名，可用扩展的默认配置直接点击。</p>
+    <button class="like-btn" type="button">👍 点赞</button>
+    <div class="count" id="count">0</div>
+    <div class="label">点击次数</div>
+  </div>
+  <script>
+    let n = 0;
+    const out = document.getElementById('count');
+    document.querySelector('.like-btn').addEventListener('click', () => {
+      n += 1;
+      out.textContent = String(n);
+    });
+  </script>
+</body>
+</html>
